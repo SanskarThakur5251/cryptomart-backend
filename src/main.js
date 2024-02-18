@@ -45,8 +45,8 @@ app.get('/orders', async (req, res) => {
 })
 
 app.get('/setup', async (req, res) => {
-    const message = 'setup done';
     setup();
+    const message = 'setup done';
     res.status(200).json({ message });
 })
 
