@@ -19,7 +19,6 @@ export const Product = db.define('Product', {
     url: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
 }, {
     timestamps: true,

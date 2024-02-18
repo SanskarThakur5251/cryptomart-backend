@@ -17,13 +17,14 @@ app.use((req, res) => {
 
 app.post('/makeOrder', async (req, res) => {
     try {
-        const { deliveryAdderss, transactionAddress } = req.body;
-        await Order.create({ deliveryAdderss, transactionAddress });
+        const { productId, deliveryAdderss, transactionAddress } = req.body;
+        await Order.create({ productId, deliveryAdderss, transactionAddress });
 
         const error = false;
         const message = 'Your Order Has Been Placed, We will reach to you soon!';
         res.status(200).json({ error, message })
     } catch (err) {
+        console.log(err);
         if (err?.errors[0]?.type == 'unique violation') {
             const error = true;
             const message = 'Order Already Placed!';
@@ -51,7 +52,7 @@ app.post('/products', async (req, res) => {
 
         const { name, price, url } = req.body;
         await Product.create({ name, price, url });
-        
+
         const error = false;
         const message = 'Product Created Successfully!';
         res.status(200).json({ error, message });

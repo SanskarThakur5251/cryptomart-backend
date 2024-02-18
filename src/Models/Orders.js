@@ -20,7 +20,6 @@ export const Order = db.define('Order', {
     productId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
     },
 }, {
     timestamps: true,
