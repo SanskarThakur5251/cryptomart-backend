@@ -1,24 +1,23 @@
 import { DataTypes } from "sequelize";
 import { db } from "../db.js";
 
-export const Order = db.define('Order', {
+export const Product = db.define('Product', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: true,
         primaryKey: true,
         autoIncrement: true,
     },
-    deliveryAdderss: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    transactionAddress: {
-        type: DataTypes.STRING,
+    price: {
+        type: DataTypes.FLOAT,
         allowNull: false,
-        unique: true,
     },
-    productId: {
-        type: DataTypes.INTEGER,
+    url: {
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
@@ -28,4 +27,4 @@ export const Order = db.define('Order', {
     updatedAt: true,
 });
 
-Order.sync();
+Product.sync();
