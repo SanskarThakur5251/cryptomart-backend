@@ -2,6 +2,7 @@ import express, { json } from "express"
 import cors from "cors"
 import { Order } from "./Models/Orders.js";
 import { Product } from "./Models/Products.js";
+import { setup } from "./setup.js";
 
 const app = express();
 
@@ -41,6 +42,12 @@ app.post('/makeOrder', async (req, res) => {
 app.get('/orders', async (req, res) => {
     const orders = await Order.findAll();
     res.status(200).json({ orders });
+})
+
+app.get('/setup', async (req, res) => {
+    const message = 'setup done';
+    setup();
+    res.status(200).json({ message });
 })
 
 app.get('/products', async (req, res) => {

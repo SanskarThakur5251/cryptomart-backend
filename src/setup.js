@@ -44,17 +44,19 @@ const prods = [
         "price": 0.5,
         "url": "https://raw.githubusercontent.com/PrashanthKumar0/finance-app/master/public/ipad%20pro%20m2%20chip_3.png"
     },
-    
+
 ];
 
-for (let prod of prods) {
-    const res = await fetch('http://localhost:8800/products', {
-        method: 'POST',
-        headers: {
-            "content-type": 'application/json',
-        },
-        body: JSON.stringify(prod),
-    }).then(r => r.json())
+export const setup = () => {
+    for (let prod of prods) {
+        const res = await fetch('http://localhost:8800/products', {
+            method: 'POST',
+            headers: {
+                "content-type": 'application/json',
+            },
+            body: JSON.stringify(prod),
+        }).then(r => r.json())
 
-    console.log(res);
+        console.log(res);
+    }
 }
