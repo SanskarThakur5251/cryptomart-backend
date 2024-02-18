@@ -47,7 +47,7 @@ const prods = [
 
 ];
 
-export const setup = () => {
+export const setup = async () => {
     for (let prod of prods) {
         const res = await fetch('http://localhost:8800/products', {
             method: 'POST',
