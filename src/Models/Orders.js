@@ -21,6 +21,10 @@ export const Order = db.define('Order', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
     timestamps: true,
     createdAt: true,

@@ -17,15 +17,16 @@ app.use((req, res) => {
 
 app.post('/makeOrder', async (req, res) => {
     try {
-        const { productId, deliveryAdderss, transactionAddress } = req.body;
-        await Order.create({ productId, deliveryAdderss, transactionAddress });
+        const { productId, deliveryAdderss, transactionAddress, phone } = req.body;
+        await Order.create({ productId, deliveryAdderss, transactionAddress, phone });
 
         const error = false;
         const message = 'Your Order Has Been Placed, We will reach to you soon!';
         res.status(200).json({ error, message })
     } catch (err) {
         console.log(err);
-        if (err?.errors[0]?.type == 'unique violation') {
+        let e = err?.errors;
+        if (e && e.length > 0 && e[0]?.type == 'unique violation') {
             const error = true;
             const message = 'Order Already Placed!';
             res.status(200).json({ error, message });
